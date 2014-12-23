@@ -1,9 +1,30 @@
 module Ametista
   module Strings
+    LAMERIZE = {
+      'a' => '4',
+      'e' => '3',
+      'i' => '1',
+      'o' => '0',
+      't' => '7',
+      'b' => '8',
+      'g' => '9',
+      's' => '5'
+    }
+
     def self.included(klass)
-      String.define_method :lamerize do
-        self.capitalize
+
+      String.class_eval do
+
+        def lamerize
+          LAMERIZE.inject(self) {|l_s, h| l_s.gsub h[0], h[1]}
+        end
+
+        def delamerize
+          LAMERIZE.inject(self) {|l_s, h| l_s.gsub h[1], h[0]}
+        end
+
       end
+
     end
   end
 end
