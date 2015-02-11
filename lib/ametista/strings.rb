@@ -1,5 +1,5 @@
 module Ametista
-  module Strings
+  class ::String
     LAMERIZE = {
       'a' => '4',
       'e' => '3',
@@ -11,20 +11,16 @@ module Ametista
       's' => '5'
     }
 
-    def self.included(klass)
-
-      String.class_eval do
-
-        def lamerize
-          LAMERIZE.inject(self) {|l_s, h| l_s.gsub h[0], h[1]}
-        end
-
-        def delamerize
-          LAMERIZE.inject(self) {|l_s, h| l_s.gsub h[1], h[0]}
-        end
-
-      end
-
+    def fs_normalize
+      downcase.gsub(' ', '_')
     end
+    def lamerize
+      LAMERIZE.inject(self) {|l_s, h| l_s.gsub h[0], h[1]}
+    end
+
+    def delamerize
+      LAMERIZE.inject(self) {|l_s, h| l_s.gsub h[1], h[0]}
+    end
+
   end
 end
