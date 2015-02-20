@@ -5,6 +5,7 @@ require "ametista/strings"
 require "ametista/logger"
 require "ametista/modules"
 require "ametista/gemify"
+require "ametista/hash"
 
 module Ametista
   # Auto inject Gemify methods into Modules
