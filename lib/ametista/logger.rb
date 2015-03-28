@@ -3,14 +3,6 @@ module Ametista
 
     class LoggerAdapter
 
-      def self.get_instance
-        @@logger ||= new
-      end
-
-      def self.change_adapter(adapter)
-        @@logger = adapter.new
-      end
-
       def print(msg)
         raise RuntimeError.new "Not implemented."
       end
@@ -41,7 +33,12 @@ module Ametista
     end
 
     def logger
-      LoggerAdapter.get_instance
+      @@logger ||= StdoutLogger.new # TODO: move singleton implementation from adapter class to namespace module
+    end
+
+    # This expose logger in class namespace
+    def self.included(klass)
+      klass.extend Logger
     end
 
   end
