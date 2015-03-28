@@ -1,0 +1,21 @@
+#!/bin/ruby
+
+require 'thor'
+require 'ametista'
+
+class BifrostCLI < Thor
+
+  desc "git shortcuts", "Generate git shortcuts and set user."
+  def git(action, *args)
+    case action
+    when "shortcuts"
+      Ametista::Bifrost.git_generate_shortcuts
+      Ametista::Bifrost.git_generate_user(args[0], args[1])
+    else
+      puts "no action defined for #{action}"
+    end
+  end
+
+end
+
+BifrostCLI.start ARGV
