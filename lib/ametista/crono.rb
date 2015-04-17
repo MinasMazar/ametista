@@ -2,7 +2,7 @@ module Ametista
   module Crono
 
     def timeout(sec, &block)
-      sleep sec
+      sleep sec.to_i
       block.call
     end
 
@@ -20,6 +20,19 @@ module Ametista
 
     def threaded(&block)
       @@threads << Thread.new(&block)
+    end
+
+  end
+
+  class BifrostCLI
+
+    include Crono
+
+    desc "echo_timeout <message> <secs>", "Echo message after secs. sleep."
+    def echo_timeout(message, seconds)
+      timeout seconds do
+        system "echo \"#{message}\""
+      end
     end
 
   end

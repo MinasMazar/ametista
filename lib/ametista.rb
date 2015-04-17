@@ -1,5 +1,4 @@
 require "ametista/version"
-require "ametista/config"
 require "ametista/classes"
 require "ametista/iterators"
 require "ametista/strings"

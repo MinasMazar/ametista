@@ -1,4 +1,3 @@
-require 'ametista/config'
 require 'ametista/logger'
 
 module Ametista
