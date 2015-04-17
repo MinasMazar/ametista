@@ -1,21 +1,16 @@
 #!/bin/ruby
 
+# include magnificent gem Thor \m/
 require 'thor'
-require 'ametista'
 
-class BifrostCLI < Thor
-
-  desc "git shortcuts", "Generate git shortcuts and set user."
-  def git(action, *args)
-    case action
-    when "shortcuts"
-      Ametista::Bifrost.git_generate_shortcuts
-      Ametista::Bifrost.git_generate_user(args[0], args[1])
-    else
-      puts "no action defined for #{action}"
-    end
+# Ametista::BifrostCLI specialize Thor class
+module Ametista
+  class BifrostCLI < Thor
   end
-
 end
 
-BifrostCLI.start ARGV
+# Now include Ametista. Modules can monkey-patch Ametista::BifrostCLI to implement use cases. 
+require 'ametista'
+
+# Start Ametista CLI app.
+Ametista::BifrostCLI.start ARGV
