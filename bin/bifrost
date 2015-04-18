@@ -3,9 +3,17 @@
 # include magnificent gem Thor \m/
 require 'thor'
 
+require 'pry'
+
 # Ametista::BifrostCLI specialize Thor class
 module Ametista
   class BifrostCLI < Thor
+
+    desc "pry", "Start pry session"
+    def pry
+      binding.pry
+    end
+
   end
 end
 

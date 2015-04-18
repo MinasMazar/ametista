@@ -8,6 +8,7 @@ require "ametista/modules"
 require "ametista/gemify"
 require "ametista/hash"
 require "ametista/bifrost"
+require "ametista/confrepo/confrepo"
 
 module Ametista
   # Auto inject Gemify methods into Modules
